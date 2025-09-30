@@ -1,10 +1,17 @@
 const {initializeDatabase} = require("./db/db.connect");
-initializeDatabase()
-const Event = require("./models/event.models");
-const express = require("express");
-const app = express();
+initializeDatabase();
 
+const express = require("express");
+const cors = require("cors");
+
+const app = express();
 app.use(express.json());
+
+app.use(cors({
+    origin: "*",
+    credentials: true,
+    optionsSuccessStatus: 200
+}))
 
 const eventRoutes = require("./routes/event.routes");
 const userRoutes = require("./routes/user.routes");
