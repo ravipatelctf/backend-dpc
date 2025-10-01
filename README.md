@@ -3,7 +3,7 @@
 This is the backend for the **Mini Event Tracker** app.  
 It provides RESTful APIs for managing **users** and **events**, with authentication and authorization.
 
-## 🚀 Tech Stack
+## Tech Stack
 - **Node.js** with **Express.js** – REST API framework  
 - **MongoDB** with **Mongoose ODM** – Database  
 - **JWT** – Authentication & authorization  
@@ -18,7 +18,7 @@ It provides RESTful APIs for managing **users** and **events**, with authenticat
 - [Backend](https://backend-dpc.vercel.app/)
 - [Frontend](https://frontend-dpc.vercel.app/)
 
-## 📂 Project Structure
+## Project Structure
 
 ````
 .
@@ -41,7 +41,7 @@ It provides RESTful APIs for managing **users** and **events**, with authenticat
 
 ````
 
-## ⚙️ Setup & Installation
+## Setup & Installation
 
 1. **Clone the repository**
     ```bash
@@ -76,11 +76,11 @@ It provides RESTful APIs for managing **users** and **events**, with authenticat
    http://localhost:5000
    ```
 
-## 📌 API References
+## API References
 
 > **local baseURL:** `http://localhost:5000`
 
-### 🔐 Authentication
+### Authentication
 
 #### **`POST /auth/signup`** → Create a new user
 
@@ -123,9 +123,9 @@ It provides RESTful APIs for managing **users** and **events**, with authenticat
 
 ---
 
-### 📅 Events (Protected Routes)
+### Events (Protected Routes)
 
-> ⚠️ Pass JWT in headers:
+> Pass JWT in headers:
 > `Authorization: Bearer <token>`
 
 #### **`POST /events/:userEmail`** → Create a new event
@@ -187,7 +187,7 @@ It provides RESTful APIs for managing **users** and **events**, with authenticat
 }
 ```
 
-## 🗄 Database Choice & Justification
+## Database Choice & Justification
 
 * **MongoDB (NoSQL)** chosen for flexibility:
 
@@ -195,11 +195,11 @@ It provides RESTful APIs for managing **users** and **events**, with authenticat
   * Easy to extend and scale.
   * JSON-like schema works well with event-based data.
 
-## 🧠 Assumptions & Trade-offs
+## Assumptions & Trade-offs
 
 * Each user has a single document containing all their events (simplifies retrieval).
 * JWT tokens expire in **24h** .
 * No role-based access control, only user-specific event ownership.
 
 ## Contact
-View developer portfolio at [ravipatelctf](https://ravipatelctf.vercel.app/)
+Visit developer portfolio at [ravipatelctf](https://ravipatelctf.vercel.app/)
