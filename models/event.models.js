@@ -1,21 +1,31 @@
 const mongoose = require("mongoose");
 
 const eventSchema = new mongoose.Schema({
-    name: {
+    email: {
         type: String,
-        required: true,
+        required: true
     },
-    dateTime: {
-        type: Date,
-        required: true,
-    },
-    location: {
-        type: String,
-        required: true,
-    },
-    description: {
-        type: String,
-    }
+    events: [{
+        name: {
+            type: String,
+            required: true,
+        },
+        dateTime: {
+            type: Date,
+            required: true,
+        },
+        location: {
+            type: String,
+            required: true,
+        },
+        description: {
+            type: String,
+        },
+        createdAt: {
+          type: Date,
+          default: Date.now,
+        },
+    }]
 },
 {
     timestamps: true,

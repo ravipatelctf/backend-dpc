@@ -13,11 +13,7 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-    },
-    events: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Event"
-    }]
+    }
 },
 {
     timestamps: true,

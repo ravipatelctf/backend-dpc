@@ -1,37 +1,36 @@
-const Event = require("../models/event.models");
-const mongoose = require("mongoose");
 
+const Event = require("../models/event.models");
 
 // -------------------------------------------------------------------------
 
 // Create
-async function createEvent(eventsData) {
-    const {name, dateTime, location, description} = eventsData;
+async function createEvent(userEmail, eventsData) {
     try {
-        const newEvent = new Event({name, dateTime, location, description});
-        const savedEvent = await newEvent.save();
-        return savedEvent;
+        const user = await Event.findOne({email: userEmail});
+        if (!user) {
+            const newEvent = new Event({email: userEmail, events: eventsData});
+            const savedEvent = await newEvent.save();
+            return savedEvent;   
+        } else {
+            user.events.push(eventsData);
+            const userWithNewEvents =  await user.save();
+            return userWithNewEvents;
+        }
     } catch (error) {
         throw error;
     }
 }
 
 // Read
-async function getAllEvents() {
+async function getEventsByUserEmail(userEmail) {
     try {
-        const allEvents = await Event.find();
+        const allEvents = await Event.findOne({email: userEmail});
         return allEvents;
     } catch (error) {
         throw error;
     }
 }
 
-// Update
-
-
-// Delete
-
-
 // -------------------------------------------------------------------------
 
-module.exports = {createEvent, getAllEvents};
+module.exports = {createEvent, getEventsByUserEmail};

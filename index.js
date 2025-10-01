@@ -14,16 +14,11 @@ app.use(cors({
 }))
 
 const eventRoutes = require("./routes/event.routes");
-const userRoutes = require("./routes/user.routes");
 const {router: authRoutes, verifyJWT} = require("./routes/auth.routes");
 
 
 // 'auth' routes
 app.use("/auth", authRoutes);
-
-
-// 'users' routes
-app.use("/users", verifyJWT, userRoutes);
 
 
 // 'events' routes

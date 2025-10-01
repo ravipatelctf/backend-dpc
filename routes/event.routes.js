@@ -1,4 +1,4 @@
-const {createEvent, getAllEvents} = require("../controllers/event.controllers");
+const {createEvent, getEventsByUserEmail} = require("../controllers/event.controllers");
 const express = require("express");
 const router = express.Router();
 router.use(express.json());
@@ -6,14 +6,9 @@ router.use(express.json());
 // ---------------------------------------------------------------------------------
 
 // Create
-router.post("/", async (req, res) => {
-    if (!req.body.name || !req.body.dateTime || !req.body.location) {
-        return res
-            .status(400)
-            .json({error: "name, data, time and location are required."});
-    }
+router.post("/:userEmail", async (req, res) => {
     try {
-        const newEvent = await createEvent(req.body);
+        const newEvent = await createEvent(req.params.userEmail, req.body);
         if (!newEvent) {
             return res
                 .status(500)
@@ -31,9 +26,9 @@ router.post("/", async (req, res) => {
 });
 
 // Read
-router.get("/", async (req, res) => {
+router.get("/:userEmail", async (req, res) => {
     try {
-        const allEvents = await getAllEvents();
+        const allEvents = await getEventsByUserEmail(req.params.userEmail);
         if (!allEvents) {
             return res
                 .status(404)
